@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon'
 import { BaseModel, belongsTo, BelongsTo, column } from '@ioc:Adonis/Lucid/Orm'
-import UserTodoList from 'App/Models/UserTodoList'
+import { UserTodoList } from 'App/Models'
 
 export default class UserTodoListItem extends BaseModel {
   @column({ isPrimary: true })

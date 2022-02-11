@@ -2,8 +2,7 @@ import { DateTime } from 'luxon'
 import { BaseModel, column, HasMany, hasMany, HasOne, hasOne } from '@ioc:Adonis/Lucid/Orm'
 import { compose } from '@ioc:Adonis/Core/Helpers'
 import { selectRelatedMixin } from '@ioc:Adonis/Addons/SelectRelated'
-import Profile from 'App/Models/Profile'
-import UserTodoList from 'App/Models/UserTodoList'
+import { Profile, UserTodoList } from 'App/Models'
 export default class User extends compose(BaseModel, selectRelatedMixin) {
   @column({ isPrimary: true })
   public id: number
