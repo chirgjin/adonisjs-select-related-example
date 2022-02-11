@@ -27,3 +27,8 @@ Route.get(
   'UsersController.filterByPhoneNumberWithoutProfile'
 )
 Route.get('/users/with-only-phone-number/', 'UsersController.withOnlyPhoneNumber')
+Route.get('/users/:id/', 'UsersController.show').where('id', /^\d+$/)
+
+Route.get('users/filter-by-todo-item/', 'NestedExampleController.filterByTodoItem')
+Route.get('users/select-related-with-preload', 'NestedExampleController.selectRelatedWithPreload')
+Route.get('users/without-profile/', 'NestedExampleController.usersWithoutProfile')

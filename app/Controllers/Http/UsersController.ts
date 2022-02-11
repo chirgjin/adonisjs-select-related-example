@@ -17,6 +17,22 @@ export default class UsersController {
   }
 
   /**
+   * Example API to demonstrate drawback of using select related
+   */
+  public async show({ params }: HttpContextContract) {
+    const user = await User.query()
+      .selectRelated('profile', {
+        joinType: 'leftOuter',
+      })
+      // .where('id', params.id) <- This will throw an error because, due to joins, 'id' is now ambiguous i.e db doesn't know which id you are referring to
+      // .where(User.col('id'), params.id)
+      .where(`${User.table}.id`, params.id)
+      .firstOrFail()
+
+    return user
+  }
+
+  /**
    * Example API which filters users by their phone numbers
    */
   public async filterByPhoneNumber({ request }: HttpContextContract) {

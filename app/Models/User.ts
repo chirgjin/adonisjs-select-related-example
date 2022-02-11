@@ -1,5 +1,13 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, HasMany, hasMany, HasOne, hasOne } from '@ioc:Adonis/Lucid/Orm'
+import {
+  BaseModel,
+  column,
+  HasMany,
+  hasMany,
+  HasOne,
+  hasOne,
+  ModelAttributes,
+} from '@ioc:Adonis/Lucid/Orm'
 import { compose } from '@ioc:Adonis/Core/Helpers'
 import { selectRelatedMixin } from '@ioc:Adonis/Addons/SelectRelated'
 import { Profile, UserTodoList } from 'App/Models'
@@ -24,4 +32,11 @@ export default class User extends compose(BaseModel, selectRelatedMixin) {
 
   @hasMany(() => UserTodoList)
   public todoLists: HasMany<typeof UserTodoList>
+
+  /**
+   * Helper to convert a columnName to `<table_name>.<column_name>` format for use with select related
+   */
+  public static col(columnName: NonNullable<keyof ModelAttributes<User>>): string {
+    return `${this.table}.${this.$getColumn(columnName)!.columnName}`
+  }
 }
