@@ -1,8 +1,8 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, HasOne, hasOne } from '@ioc:Adonis/Lucid/Orm'
 import { compose } from '@ioc:Adonis/Core/Helpers'
 import { selectRelatedMixin } from '@ioc:Adonis/Addons/SelectRelated'
-
+import Profile from 'App/Models/Profile'
 export default class User extends compose(BaseModel, selectRelatedMixin) {
   @column({ isPrimary: true })
   public id: number
@@ -18,4 +18,7 @@ export default class User extends compose(BaseModel, selectRelatedMixin) {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
+
+  @hasOne(() => Profile)
+  public profile: HasOne<typeof Profile>
 }
