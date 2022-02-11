@@ -28,7 +28,8 @@
     "types": [
       "@adonisjs/core",
       "@adonisjs/repl",
-      "adonisjs-select-related"
+      "adonisjs-select-related",
+      "@adonisjs/lucid"
     ]
   }
 }
