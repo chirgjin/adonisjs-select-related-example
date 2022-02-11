@@ -13,7 +13,6 @@ export default class UserTodoListItems extends BaseSchema {
         .references('id')
         .inTable('user_todo_lists')
         .notNullable()
-        .unique()
 
       table.string('item_name').notNullable()
       table.boolean('completed').defaultTo(false)

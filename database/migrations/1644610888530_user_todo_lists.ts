@@ -7,7 +7,7 @@ export default class UserTodoLists extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
 
-      table.integer('user_id').unsigned().references('id').inTable('users').notNullable().unique()
+      table.integer('user_id').unsigned().references('id').inTable('users').notNullable()
 
       table.string('title').notNullable()
       /**
