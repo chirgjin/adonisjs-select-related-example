@@ -1,8 +1,10 @@
 import { DateTime } from 'luxon'
 import { BaseModel, belongsTo, BelongsTo, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
 import { UserTodoListItem, User } from 'App/Models'
+import { compose } from '@ioc:Adonis/Core/Helpers'
+import { selectRelatedMixin } from '@ioc:Adonis/Addons/SelectRelated'
 
-export default class UserTodoList extends BaseModel {
+export default class UserTodoList extends compose(BaseModel, selectRelatedMixin) {
   @column({ isPrimary: true })
   public id: number
 
