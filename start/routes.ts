@@ -20,6 +20,10 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', async () => {
-  return { hello: 'world' }
-})
+Route.get('/users', 'UsersController.index')
+Route.get('/users/filter-by-phone-number/', 'UsersController.filterByPhoneNumber')
+Route.get(
+  '/users/filter-by-phone-number/without-profile/',
+  'UsersController.filterByPhoneNumberWithoutProfile'
+)
+Route.get('/users/with-only-phone-number/', 'UsersController.withOnlyPhoneNumber')
